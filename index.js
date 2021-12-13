@@ -1,6 +1,10 @@
 const area = document.getElementById('area');
 let move = 0;
-let result="";
+const winner = {
+    X: "крестики",
+    0: "нолики",
+}
+
 const content = document.getElementById('content');
 const btnClose = document.getElementById('btn-close');
 
@@ -26,19 +30,14 @@ const check=()=>{
     ];
     for(i=0; i<arr.length; i++){
         if(
-            boxes[arr[i][0]].innerHTML=="X"&&
-            boxes[arr[i][1]].innerHTML=="X"&&
-            boxes[arr[i][2]].innerHTML=="X"
+            boxes[arr[i][0]].innerHTML==boxes[arr[i][1]].innerHTML&&
+            boxes[arr[i][1]].innerHTML==boxes[arr[i][2]].innerHTML&&
+            boxes[arr[i][0]].innerHTML!==""&&
+            boxes[arr[i][1]].innerHTML!==""&&
+            boxes[arr[i][2]].innerHTML!==""
             ) {
-                result="крестики";
+                const result=winner[boxes[arr[i][0]].innerHTML];
                 prepareResult(result);
-            } else if(
-                boxes[arr[i][0]].innerHTML=="0"&&
-                boxes[arr[i][1]].innerHTML=="0"&&
-                boxes[arr[i][2]].innerHTML=="0"
-                ) {
-                    result="нолики";
-                    prepareResult(result);
                 }
             }
         }
